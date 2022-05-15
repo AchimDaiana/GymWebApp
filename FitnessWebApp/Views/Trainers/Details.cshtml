@@ -7,6 +7,7 @@
 }
 
 <h1>Detalii despre antrenorul @Model.FirstName</h1>
+<br />
 <div class="row">
     <div class="col-md-8 offset-2">
         <div class="form-group">
@@ -30,8 +31,8 @@
             <span asp-validation-for="ProfilePicture" class="text-danger"></span>
         </div>
         <div>
-            <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
-            <a class="float-right" asp-action="Index">Back to List</a>
+            <a asp-action="Edit" asp-route-id="@Model.Id">Editează</a>
+            <a class="float-right" asp-action="Index">Înapoi la listă</a>
         </div>
 
     </div>

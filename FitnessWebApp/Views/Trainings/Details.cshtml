@@ -6,15 +6,16 @@
 }
 
 <h1>Detalii despre antrenamentul </h1>
+<br />
 <div class="col-md-6 offset-2">
-    <img src="@Model.Picture" class="align-baseline" alt="@Model.Name">
+    <img src="@Model.Picture" class="align-baseline" alt="@Model.Name style="max-width: 200px">
     <div class="card-block">
         <!--Title-->
         <h4 class="card-title">@Model.Name</h4>
         <!--Text-->
         <p class="card-text">@Model.Description</p>
-        <p class="card-text">@Model.StartHour.ToString("HH:mm")</p>
-        <p class="card-text">@Model.FinishHour.ToString("HH:mm")</p>
+        <p class="card-text"><b>Ora începerii:</b>@Model.StartHour.ToString("HH:mm")</p>
+        <p class="card-text"><b>Ora finalizării:</b>@Model.FinishHour.ToString("HH:mm")</p>
         <p class="card-text"><b>Categoria clasei:</b>@Model.Category.ToString()</p>
         <p class="card-text">
             <b>Antrenorul:</b>
@@ -29,6 +30,6 @@
     </div>
 </div>
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Înapoi la listă</a>
 </div>
 

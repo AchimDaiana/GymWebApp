@@ -12,16 +12,16 @@ namespace GymWebApp.Models
         [Key]
         public int Id { get; set; }
 
-        [Display(Name = "Numele si prenume")]
+        [Display(Name = "Numele și prenume")]
         public string Name { get; set; }
 
         public string Email { get; set; }
 
-        [Display(Name = "Ora participarii")]
+        [Display(Name = "Ora participării")]
         // [DisplayFormat(DataFormatString = "{hh:mm tt}")]
         public DateTime ParticipationHour { get; set; }
 
-        [Display(Name = "Data participarii")]
+        [Display(Name = "Data participării")]
         [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime ParticipationDate { get; set; }
 

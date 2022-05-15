@@ -1,6 +1,7 @@
 using FitnessWebApp.Data;
 using GymWebApp.Data;
 using GymWebApp.Data.Services;
+using GymWebApp.Hubs;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -44,6 +45,8 @@ namespace FitnessWebApp
             services.AddScoped<IReservationsServices, ReservationsService>();
 
             services.AddControllersWithViews();
+            //configurare serviciu signal r
+            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -74,6 +77,9 @@ namespace FitnessWebApp
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
+
+                //endpoint pt signalr
+                endpoints.MapHub<ChatHub>("/chathub");
             });
 
             //seed db

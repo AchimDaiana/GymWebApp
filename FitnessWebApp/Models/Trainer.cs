@@ -13,20 +13,20 @@ namespace GymWebApp.Models
         public int Id { get; set; }
 
         [Display(Name = "Prenume")]
-        [Required(ErrorMessage = "Caseta 'Prenume' trebuie completata!")]
-        [StringLength(10, MinimumLength = 3, ErrorMessage = "Caseta 'Prenumele' trebuie sa contina intre 3 si 10 caractere!")]
+        [Required(ErrorMessage = "Caseta 'Prenume' trebuie completată!")]
+        [StringLength(20, MinimumLength = 3, ErrorMessage = "Caseta 'Prenumele' trebuie să conțină între 3 și 20 caractere!")]
         public string FirstName { get; set; }
 
         [Display(Name = "Nume")]
-        [Required(ErrorMessage = "Caseta 'Nume' trebuie completata!")]
-        [StringLength(10, MinimumLength = 3, ErrorMessage = "Caseta 'Nume' trebuie sa contina intre 3 si 10 caractere!")]
+        [Required(ErrorMessage = "Caseta 'Nume' trebuie completată!")]
+        [StringLength(20, MinimumLength = 3, ErrorMessage = "Caseta 'Nume' trebuie să conțină între 3 și 20 caractere!")]
         public string LastName { get; set; }
 
-        [Display(Name = "Poza de profil")]
+        [Display(Name = "Poză de profil")]
         public string ProfilePicture { get; set; }
 
         [Display(Name = "Biografie")]
-        [Required(ErrorMessage = "Caseta 'Biografie' trebuie completata!")]
+        [Required(ErrorMessage = "Caseta 'Biografie' trebuie completată!")]
         public string Biography { get; set; }
     }
 }

@@ -6,15 +6,16 @@
 }
 
 <h1 class="text-center">Detalii despre rezervare </h1>
-<div class="row text-center">
+<br/>
+<div class="row ">
     <div class="col-md-8 offset-2">
         <p class="card-text"><b>Nume: </b>@Model.Name</p>
         <p class="card-text"><b>Email: </b>@Model.Email</p>
-        <p class="card-text"><b>Ora participarii: </b>@Model.ParticipationHour.ToString("HH:mm")</p>
-        <p class="card-text"><b>Data participarii: </b>@Model.ParticipationDate.ToString("dd/MM/yyyy")</p>
+        <p class="card-text"><b>Ora participării: </b>@Model.ParticipationHour.ToString("HH:mm")</p>
+        <p class="card-text"><b>Data participării: </b>@Model.ParticipationDate.ToString("dd/MM/yyyy")</p>
         <p class="card-text"><b>Antrenamentul rezervat: </b>@Model.Training.Name</p>
         <div>
-            <a asp-action="Index">Back to List</a>
+            <a asp-action="Index">Înapoi la listă</a>
         </div>
     </div>
 </div>

@@ -5,28 +5,36 @@
     ViewData["Title"] = "Details of fitness subscription";
 }
 
-<h1>Detalii despre @Model.Name</h1>
+<h1 class="text-center">Detalii</h1>
+<br />
+
 <div class="container marginTop">
-    <div class="row">
+    <div>
+            <div class="col-md 4">
+                <div class="text-center view overlay hm-white-slight">
 
-        <div class="text-center view overlay hm-white-slight">
-
-            <img src="@Model.Picture" class="img-fluid" alt="@Model.Name">
-            <a href="#">
-                <div class="mask waves-effect waves-light"></div>
-            </a>
-        </div>
-        <div class="card-block float-left">
-            <!--Title-->
-            <h4 class="card-title">@Model.Name</h4>
-            <!--Text-->
-            <p class="card-text">@Model.Description.</p>
-            <p class="card-text"><b>Valabilitate: </b>@Model.Validity</p>
-            <p class="card-text"><b>Pret: </b>@Model.Price</p>
-            <p class="btn btn-group pull-right">
-                <a asp-action="Index" class="btn btn-default">Back to list</a>
-            </p>
-        </div>
+                    <img src="@Model.Picture" class="img-fluid" alt="@Model.Name " width="300" height="300">
+                    <a href="#">
+                        <div class="mask waves-effect waves-light"></div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md 8">
+                <div class="card-block">
+                    <!--Title-->
+                    <h4 class="card-title">@Model.Name</h4>
+                    <!--Text-->
+                    <p class="card-text">@Model.Description.</p>
+                    <p class="card-text"><b>Valabilitate: </b>@Model.Validity</p>
+                    <p class="card-text"><b>Preț: </b>@Model.Price</p>
+                    <div class="row">
+                        <p class="btn btn-group pull-right">
+                            <a asp-action="Index" class="btn btn-default">Înapoi la listă</a>
+                        </p>
+                    </div>
+                   
+                </div>
+            </div>
 
 
     </div>
