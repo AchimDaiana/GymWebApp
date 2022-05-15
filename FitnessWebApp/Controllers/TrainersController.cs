@@ -62,7 +62,7 @@ namespace GymWebApp.Controllers
         public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,ProfilePicture,Biography")] Trainer trainer)
         {
             if (!ModelState.IsValid)
-            {
+            {  
                 return View(trainer);
             }
 
