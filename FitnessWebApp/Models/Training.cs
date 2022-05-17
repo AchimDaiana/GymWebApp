@@ -13,7 +13,7 @@ namespace GymWebApp.Models
         [Key]
         public int Id { get; set; }
 
-        [Display(Name = "Nume")]
+        [Display(Name = "Nume Antrenament")]
         [Required(ErrorMessage = "Caseta 'Nume' trebuie completată!")]
         [StringLength(50, MinimumLength = 3, ErrorMessage = "Caseta 'Prenumele' trebuie să conțină între 3 și 50 caractere!")]
         public string Name { get; set; }

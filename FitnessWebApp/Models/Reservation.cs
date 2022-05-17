@@ -18,7 +18,7 @@ namespace GymWebApp.Models
         public string Email { get; set; }
 
         [Display(Name = "Ora participării")]
-        // [DisplayFormat(DataFormatString = "{hh:mm tt}")]
+        [DisplayFormat(DataFormatString = "{0:HH:mm}")]
         public DateTime ParticipationHour { get; set; }
 
         [Display(Name = "Data participării")]
