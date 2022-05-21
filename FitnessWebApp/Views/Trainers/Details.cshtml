@@ -31,7 +31,10 @@
             <span asp-validation-for="ProfilePicture" class="text-danger"></span>
         </div>
         <div>
-            <a asp-action="Edit" asp-route-id="@Model.Id">Editează</a>
+            @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+            {
+                <a asp-action="Edit" asp-route-id="@Model.Id">Editează</a>
+            }
             <a class="float-right" asp-action="Index">Înapoi la listă</a>
         </div>
 

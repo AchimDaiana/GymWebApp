@@ -6,7 +6,7 @@
 }
 
 <h1 class="text-center">Lista abonamentelor fitness disponibile în fiecare zi</h1>
-<br/>
+<br />
 
 <div class="row">
     @{
@@ -26,36 +26,44 @@
                     <a asp-action="Delete" asp-route-id="@item.Id">Șterge</a>
                 </div>*@
 
-    <div class="col-md-4 col-xs-6 border-primary mb-3">
-        <div class="card" style="max-width: 500px; height: 650px ">
-            <div class="card-header text-white bg-primary" style="height: 300px; ">
-                <img src="@item.Picture" width="100%" style="height: 300px;" alt="@item.Name">
-            </div>
-            <div class="card-body">
-                <h5 class="card-title">@item.Name</h5>
-                <p class="card-text">@item.Description</p>
+            <div class="col-md-4 col-xs-6 border-primary mb-3">
+                <div class="card" style="max-width: 500px; height: 650px ">
+                    <div class="card-header text-white bg-primary" style="height: 300px; ">
+                        <img src="@item.Picture" width="100%" style="height: 300px;" alt="@item.Name">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">@item.Name</h5>
+                        <p class="card-text">@item.Description</p>
+
+                    </div>
+                    <div class="card-footer" style="height: 80px;">
+                        <p class="card-text float-right">@item.Price<span> lei</span> </p>
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary float-left">Vizualizare detalii</a>
+                    </div>
+
+                </div>
+
+                @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                {
+                    <a asp-action="Edit" asp-route-id="@item.Id">Editează</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id">Șterge</a>
+                }
 
             </div>
-            <div class="card-footer"  style="height: 80px;">
-                <p class="card-text float-right">@item.Price<span> lei</span> </p>
-                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary float-left">Vizualizare detalii</a>
-            </div>
-
-            </div>
-            <a asp-action="Edit" asp-route-id="@item.Id">Editează</a> |
-            <a asp-action="Delete" asp-route-id="@item.Id">Șterge</a>
-        </div>
 
 
 
-         }
+        }
     }
 
-            </div>
-            <div class="float-right">
-                <a asp-action="Create">Adaugă</a>
-            </div>
+</div>
 
+@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <div class="float-right">
+        <a asp-action="Create">Adaugă</a>
+    </div>
 
+}
 
 

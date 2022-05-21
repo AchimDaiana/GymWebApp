@@ -36,6 +36,7 @@ namespace FitnessWebApp
             services.AddDatabaseDeveloperPageExceptionFilter();
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             //services conf
@@ -43,6 +44,7 @@ namespace FitnessWebApp
             services.AddScoped<ISubscriptionsServices, SubscriptionsService>();
             services.AddScoped<ITrainingsServices, TrainingsService>();
             services.AddScoped<IReservationsServices, ReservationsService>();
+
 
             services.AddControllersWithViews();
             //configurare serviciu signal r
@@ -68,6 +70,7 @@ namespace FitnessWebApp
 
             app.UseRouting();
 
+            //authentication and authorization
             app.UseAuthentication();
             app.UseAuthorization();
 
@@ -84,6 +87,7 @@ namespace FitnessWebApp
 
             //seed db
             ApplicationDbInitializer.SeedDb(app);
+           
         }
     }
 }

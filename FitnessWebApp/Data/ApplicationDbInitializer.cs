@@ -1,6 +1,7 @@
 ﻿using FitnessWebApp.Data;
 using GymWebApp.Models;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -74,5 +75,7 @@ namespace GymWebApp.Data
 
             }
         }
+
+        
     }
 }

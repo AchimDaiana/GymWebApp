@@ -10,10 +10,12 @@
 <h1>Lista antrenorilor fitness</h1>
 <br />
 
-
-<p>
-    <a asp-action="Create">Adaugă</a>
-</p>
+@if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+{
+    <p>
+        <a asp-action="Create">Adaugă</a>
+    </p>
+}
 
 <table class="table">
     <thead>
@@ -36,25 +38,29 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Biography)
+            </td>
+            <td>
+                <img src="@item.ProfilePicture" alt="@item.FirstName" style="max-width: 200px" class="rounded">
+            </td>
+            @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+            {
                 <td>
-                    @Html.DisplayFor(modelItem => item.FirstName)
+                    <a asp-action="Details" asp-route-id="@item.Id">Detalii</a> 
+                    <a asp-action="Edit" asp-route-id="@item.Id">Editează</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id">Șterge</a>    
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LastName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Biography)
-                </td>
-                <td>
-                    <img src="@item.ProfilePicture" alt="@item.FirstName" style="max-width: 200px" class="rounded">
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Editează</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Detalii</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Șterge</a>
-                </td>
-            </tr>
+            }
+
+        </tr>
         }
     </tbody>
 </table>
