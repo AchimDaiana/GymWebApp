@@ -33,9 +33,9 @@
         <div class="form-group">
             <form asp-action="Delete">
                 <input type="hidden" asp-for="Id" />
-                <input type="submit" value="Șterge" />
+                <input type="submit" class="btn btn-danger"value="Șterge" />
             </form>
-            <a class="float-right" asp-action="Index">Înapoi la listă</a>
+            <a asp-action="Index" class="btn btn-primary float-right"><i class="bi bi-arrow-left-circle"></i>Înapoi la listă</a>
         </div>
     </div>
 </div>

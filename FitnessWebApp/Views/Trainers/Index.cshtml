@@ -13,7 +13,7 @@
 @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
 {
     <p>
-        <a asp-action="Create">Adaugă</a>
+        <a asp-action="Create" class="btn btn-success"><i class="bi bi-plus-clipboard2-plus"></i>Adaugă</a>
     </p>
 }
 
@@ -53,10 +53,10 @@
             </td>
             @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
             {
-                <td>
-                    <a asp-action="Details" asp-route-id="@item.Id">Detalii</a> 
-                    <a asp-action="Edit" asp-route-id="@item.Id">Editează</a>
-                    <a asp-action="Delete" asp-route-id="@item.Id">Șterge</a>    
+                <td div class="col-sm-1">
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary float-right"><i class="bi bi-file-text"></i>Vezi detalii</a> 
+                    <a class=" btn btn-outline-info" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil "></i>Editează</a> 
+                    <a class=" btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash"></i>Șterge</a>   
                 </td>
             }
 

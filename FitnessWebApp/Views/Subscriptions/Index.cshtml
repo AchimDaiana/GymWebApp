@@ -36,17 +36,21 @@
                         <p class="card-text">@item.Description</p>
 
                     </div>
-                    <div class="card-footer" style="height: 80px;">
-                        <p class="card-text float-right">@item.Price<span> lei</span> </p>
-                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary float-left">Vizualizare detalii</a>
+                    <div class="card-footer" style="height: 65px;">
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary float-right"><i class="bi bi-file-text"></i>Vizualizare detalii</a>
                     </div>
 
                 </div>
+                <br />
 
                 @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
                 {
-                    <a asp-action="Edit" asp-route-id="@item.Id">Editează</a>
-                    <a asp-action="Delete" asp-route-id="@item.Id">Șterge</a>
+                    <div class="row">
+
+                        <a class=" btn btn-outline-info" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil "></i>Editează</a>  |
+
+                        <a class=" btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash"></i>Șterge</a>
+                    </div>
                 }
 
             </div>
@@ -60,8 +64,10 @@
 
 @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
 {
-    <div class="float-right">
-        <a asp-action="Create">Adaugă</a>
+
+
+    <div style="position:fixed; right: 25px; bottom:65px;" >
+        <a asp-action="Create" class="btn btn-success"><i class="bi bi-plus-clipboard2-plus"></i>Adaugă</a>
     </div>
 
 }

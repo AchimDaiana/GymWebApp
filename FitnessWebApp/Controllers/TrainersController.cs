@@ -41,7 +41,7 @@ namespace GymWebApp.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        //get:trainer/details
+        //get:trainer/details 
         public async Task<IActionResult> Details(int id)
         {
             var trainerDetails = await _service.GetByIdAsync(id);
@@ -50,7 +50,8 @@ namespace GymWebApp.Controllers
             return View(trainerDetails);
         }
 
-        //get:editare antrenor
+      
+
         public async Task<IActionResult> Edit(int id)
         {
             var trainerDetails = await _service.GetByIdAsync(id);
@@ -69,6 +70,7 @@ namespace GymWebApp.Controllers
             await _service.UpdateAsync(id, trainer);
             return RedirectToAction(nameof(Index));
         }
+
 
         //get:stergere antrenor
         public async Task<IActionResult> Delete(int id)

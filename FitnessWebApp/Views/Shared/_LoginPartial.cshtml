@@ -6,21 +6,21 @@
 @if (SignInManager.IsSignedIn(User))
 {
     <li class="nav-item">
-        <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Salut @User.Identity.Name!</a>
+        <a  class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage"><div class="btn btn-outline-secondary"><i class="bi bi-gear"></i>Salut @User.Identity.Name!</div></a>
     </li>
     <li class="nav-item">
         <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button  type="submit" class="nav-link btn btn-link text-dark">Deconectează-te</button>
+            <button  type="submit" class="nav-link btn btn-link text-dark"><div class="btn btn-outline-secondary"><i class="bi bi-door-open"></i>Deconectează-te</div></button>
         </form>
     </li>
 }
 else
 {
     <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
+        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register"><div class="btn btn-outline-secondary"><i class="bi bi-box-arrow-in-right"></i>Înregistrare</div></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login"><div class="btn btn-outline-secondary"><i class="bi bi-person-plus"></i>Autentificare</div></a>
     </li>
 }
 </ul>

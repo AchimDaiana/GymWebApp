@@ -11,7 +11,7 @@
 <br/>
 
 <p>
-    <a asp-action="Create">Adaugă</a>
+    <a asp-action="Create" class="btn btn-success"><i class="bi bi-plus-clipboard2-plus"></i>Adaugă</a>
 </p>
 
 <table class="table">
@@ -55,10 +55,10 @@
                     @Html.DisplayFor(modelItem => item.Training.Name)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Editează</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Detalii</a>
-                    @* <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> |*@
-</td>
+                    <a class=" btn btn-outline-info" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil "></i>Editează</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary float-right"><i class="bi bi-file-text"></i>Vizualizare detalii</a>
+
+                </td>
             </tr>
         }
     </tbody>

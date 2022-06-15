@@ -33,9 +33,9 @@
         <div>
             @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
             {
-                <a asp-action="Edit" asp-route-id="@Model.Id">Editează</a>
+                <a asp-action="Edit" class="btn btn-info" asp-route-id="@Model.Id">Editează</a>
             }
-            <a class="float-right" asp-action="Index">Înapoi la listă</a>
+        <a asp-action="Index" class="btn btn-primary float-right"><i class="bi bi-arrow-left-circle"></i>Înapoi la listă</a>
         </div>
 
     </div>

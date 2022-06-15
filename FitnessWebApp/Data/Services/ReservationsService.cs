@@ -2,10 +2,12 @@
 using GymWebApp.Data.BaseRepository;
 using GymWebApp.Data.ViewModels;
 using GymWebApp.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace GymWebApp.Data.Services
@@ -13,9 +15,12 @@ namespace GymWebApp.Data.Services
     public class ReservationsService : EntityBaseRepository<Reservation>, IReservationsServices
     {
         private readonly ApplicationDbContext _context;
-        public ReservationsService(ApplicationDbContext context) : base(context)
+        private readonly UserManager<IdentityUser> _userManager;
+
+        public ReservationsService(ApplicationDbContext context, UserManager<IdentityUser> userManager) : base(context)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         public async Task AddReservationAsync(ReservationVM data)
@@ -31,16 +36,22 @@ namespace GymWebApp.Data.Services
             await _context.SaveChangesAsync();
         }
 
-        public async Task<Reservation> GetReservationByIdAsync(int id)
+        public async Task <Reservation> GetReservationByIdAsync(int id)
         {
-            var reservationDetails = await _context.Reservations
-                .Include(b => b.Training)
-                .FirstOrDefaultAsync(m => m.Id == id);
+/*            var userId = _userManager.GetUserId();
+            var user = await _userManager.FindByEmailAsync(User.Identity.UserName);
+            int userId = User.Identity.GetUserId<int>();
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);*/
 
-            return reservationDetails;
-        }
+                       // var userEmail = userEmail.FindFirstValue(ClaimTypes.Email); // will give the user's Email
+                        var reservationDetails = await _context.Reservations
+                            .Include(b => b.Training)//.Where(n => n.Name == )//emailul utilizatorului conectat
+                            .FirstOrDefaultAsync(m => m.Id == id);
 
-        public async Task<ReservationDropDownsVM> GetReservationDropDownsData()
+                        return reservationDetails;
+                    }
+
+            public async Task<ReservationDropDownsVM> GetReservationDropDownsData()
         {
             var outcome = new ReservationDropDownsVM();
             outcome.Trainings = await _context.Trainings.OrderBy(m => m.Name).ToListAsync();
