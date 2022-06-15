@@ -1,9 +1,7 @@
 ﻿using GymWebApp.Data.BaseRepository;
+using Microsoft.AspNetCore.Identity;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace GymWebApp.Models
 {
@@ -11,11 +9,8 @@ namespace GymWebApp.Models
     {
         [Key]
         public int Id { get; set; }
-
-        [Display(Name = "Numele și prenume")]
-        public string Name { get; set; }
-
-        public string Email { get; set; }
+        public string UserId { get; set; }
+        public IdentityUser User { get; set; }
 
         [Display(Name = "Ora participării")]
         [DisplayFormat(DataFormatString = "{0:HH:mm}")]

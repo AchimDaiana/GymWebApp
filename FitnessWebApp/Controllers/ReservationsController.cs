@@ -1,14 +1,15 @@
 ﻿using GymWebApp.Data.Services;
 using GymWebApp.Data.ViewModels;
+using GymWebApp.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace GymWebApp.Controllers
 {
+    [Authorize]
     public class ReservationsController : Controller
     {
         private readonly IReservationsServices _service;
@@ -20,8 +21,19 @@ namespace GymWebApp.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var allReservations = await _service.GetAllAsync(m => m.Training);
-            return View(allReservations);
+            var reservations = Enumerable.Empty<Reservation>();
+
+            if (User.IsInRole("Admin"))
+            {
+                reservations = await _service.GetAllAsync(m => m.Training, m => m.User);
+            }
+            else
+            {
+                var username = User.Identity.Name;
+                reservations = await _service.GetAllAsync(m => m.User.UserName == username, m => m.Training, m => m.User);
+            }
+
+            return View(reservations);
         }
 
         public async Task<IActionResult> Details(int id)
@@ -47,7 +59,9 @@ namespace GymWebApp.Controllers
                 ViewBag.Trainings = new SelectList(reservationDropDownsValue.Trainings, "Id", "Name");
                 return View(reservation);
             }
-            await _service.AddReservationAsync(reservation);
+
+            var username = User.Identity.Name;
+            await _service.AddReservationAsync(reservation, username);
             return RedirectToAction(nameof(Index));
         }
 
@@ -59,8 +73,6 @@ namespace GymWebApp.Controllers
 
             var outcome = new ReservationVM();
             outcome.Id = reservationDetails.Id;
-            outcome.Name = reservationDetails.Name;
-            outcome.Email = reservationDetails.Email;
             outcome.ParticipationHour = reservationDetails.ParticipationHour;
             outcome.ParticipationDate = reservationDetails.ParticipationDate;
             outcome.TrainingId = reservationDetails.TrainingId;

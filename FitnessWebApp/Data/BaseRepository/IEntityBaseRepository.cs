@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
@@ -11,6 +10,8 @@ namespace GymWebApp.Data.BaseRepository
         Task<IEnumerable<G>> GetAllAsync();
 
         Task<IEnumerable<G>> GetAllAsync(params Expression<Func<G, object>>[] includeProperties);
+
+        Task<IEnumerable<G>> GetAllAsync(Expression<Func<G, bool>> filterCriteria, params Expression<Func<G, object>>[] includeProperties);
 
         Task<G> GetByIdAsync(int id);
 

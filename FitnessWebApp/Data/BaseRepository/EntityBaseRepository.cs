@@ -46,6 +46,14 @@ namespace GymWebApp.Data.BaseRepository
 
         }
 
+        public async Task<IEnumerable<G>> GetAllAsync(Expression<Func<G, bool>> filterCriteria, params Expression<Func<G, object>>[] includeProperties)
+        {
+            IQueryable<G> query = _context.Set<G>();
+            query = includeProperties.Aggregate(query, (current, includeProperties) => current.Include(includeProperties));
+            query = query.Where(filterCriteria);
+            return await query.ToListAsync();
+        }
+
         public async Task<G> GetByIdAsync(int id)
         {
             var outcome = await _context.Set<G>().FirstOrDefaultAsync(m => m.Id == id);

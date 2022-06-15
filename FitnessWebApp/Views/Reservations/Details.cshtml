@@ -9,8 +9,8 @@
 <br/>
 <div class="row ">
     <div class="col-md-8 offset-2">
-        <p class="card-text"><b>Nume: </b>@Model.Name</p>
-        <p class="card-text"><b>Email: </b>@Model.Email</p>
+        <p class="card-text"><b>Nume: </b>@Model.User.UserName</p>
+        @*<p class="card-text"><b>Email: </b>@Model.Email</p>*@
         <p class="card-text"><b>Ora participării: </b>@Model.ParticipationHour.ToString("HH:mm")</p>
         <p class="card-text"><b>Data participării: </b>@Model.ParticipationDate.ToString("dd/MM/yyyy")</p>
         <p class="card-text"><b>Antrenamentul rezervat: </b>@Model.Training.Name</p>

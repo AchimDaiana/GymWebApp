@@ -23,11 +23,12 @@ namespace GymWebApp.Data.Services
             _userManager = userManager;
         }
 
-        public async Task AddReservationAsync(ReservationVM data)
+        public async Task AddReservationAsync(ReservationVM data, string username)
         {
+            var user = await _userManager.FindByNameAsync(username);
+
             var newReservation = new Reservation();
-            newReservation.Name = data.Name;
-            newReservation.Email = data.Email;
+            newReservation.User = user;
             newReservation.ParticipationHour = data.ParticipationHour;
             newReservation.ParticipationDate = data.ParticipationDate;
             newReservation.TrainingId = data.TrainingId;
@@ -36,22 +37,23 @@ namespace GymWebApp.Data.Services
             await _context.SaveChangesAsync();
         }
 
-        public async Task <Reservation> GetReservationByIdAsync(int id)
+        public async Task<Reservation> GetReservationByIdAsync(int id)
         {
-/*            var userId = _userManager.GetUserId();
-            var user = await _userManager.FindByEmailAsync(User.Identity.UserName);
-            int userId = User.Identity.GetUserId<int>();
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);*/
+            /*            var userId = _userManager.GetUserId();
+                        var user = await _userManager.FindByEmailAsync(User.Identity.UserName);
+                        int userId = User.Identity.GetUserId<int>();
+                        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);*/
 
-                       // var userEmail = userEmail.FindFirstValue(ClaimTypes.Email); // will give the user's Email
-                        var reservationDetails = await _context.Reservations
-                            .Include(b => b.Training)//.Where(n => n.Name == )//emailul utilizatorului conectat
-                            .FirstOrDefaultAsync(m => m.Id == id);
+            // var userEmail = userEmail.FindFirstValue(ClaimTypes.Email); // will give the user's Email
+            var reservationDetails = await _context.Reservations
+                .Include(b => b.Training)
+                .Include(b => b.User)
+                .FirstOrDefaultAsync(m => m.Id == id);
 
-                        return reservationDetails;
-                    }
+            return reservationDetails;
+        }
 
-            public async Task<ReservationDropDownsVM> GetReservationDropDownsData()
+        public async Task<ReservationDropDownsVM> GetReservationDropDownsData()
         {
             var outcome = new ReservationDropDownsVM();
             outcome.Trainings = await _context.Trainings.OrderBy(m => m.Name).ToListAsync();
@@ -64,8 +66,6 @@ namespace GymWebApp.Data.Services
             if (dbReservation != null)
             {
                 var newReservation = new Reservation();
-                dbReservation.Name = data.Name;
-                dbReservation.Email = data.Email;
                 dbReservation.ParticipationHour = data.ParticipationHour;
                 dbReservation.ParticipationDate = data.ParticipationDate;
                 dbReservation.TrainingId = data.TrainingId;
