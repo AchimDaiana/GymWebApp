@@ -12,24 +12,11 @@
     @{
         foreach (var item in Model)
         {
-            @*<div class="col-md-4 col-xs-6 border-primary mb-3 d-flex">
-                    <div class="card" style="width: 18rem;">
-                        <img src="@item.Picture" class="card-img-top" alt="@item.Name">
-                        <div class="card-body">
-                            <h5 class="card-title">@item.Name</h5>
-                            <p class="card-text">@item.Description</p>
-                            <p class="card-text float-right">@item.Price </p>
-                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Vizualizare detalii</a>
-                        </div>
-                    </div>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Editează</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Șterge</a>
-                </div>*@
 
             <div class="col-md-4 col-xs-6 border-primary mb-3">
                 <div class="card" style="max-width: 500px; height: 650px ">
                     <div class="card-header text-white bg-primary" style="height: 300px; ">
-                        <img src="@item.Picture" width="100%" style="height: 300px;" alt="@item.Name">
+                        <img src="@item.Picture" width="100%" style="height: 280px;" alt="@item.Name">
                     </div>
                     <div class="card-body">
                         <h5 class="card-title">@item.Name</h5>

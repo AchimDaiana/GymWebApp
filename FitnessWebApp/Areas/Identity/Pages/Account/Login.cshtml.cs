@@ -48,9 +48,10 @@ namespace FitnessWebApp.Areas.Identity.Pages.Account
 
             [Required]
             [DataType(DataType.Password)]
+            [Display(Name = "Parolă")]
             public string Password { get; set; }
 
-            [Display(Name = "Remember me?")]
+            [Display(Name = "Ține-mă minte!")]
             public bool RememberMe { get; set; }
         }
 
@@ -98,7 +99,7 @@ namespace FitnessWebApp.Areas.Identity.Pages.Account
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    ModelState.AddModelError(string.Empty, "Credențiale introduse greșit!");
                     return Page();
                 }
             }

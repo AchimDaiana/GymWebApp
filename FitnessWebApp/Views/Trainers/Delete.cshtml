@@ -6,7 +6,7 @@
     ViewData["Title"] = "Delete trainer";
 }
 
-<h1>Șterge antrenorul @Model.FirstName</h1>
+<h1 class="text-center">Șterge antrenorul @Model.FirstName</h1>
 <br />
 <div class="row">
     <div class="col-md-8 offset-2">
@@ -33,9 +33,9 @@
         <div class="form-group">
             <form asp-action="Delete">
                 <input type="hidden" asp-for="Id" />
-                <input type="submit" class="btn btn-danger"value="Șterge" />
+                <input type="submit" value="Șterge" class="btn btn-danger float-right" />
             </form>
-            <a asp-action="Index" class="btn btn-primary float-right"><i class="bi bi-arrow-left-circle"></i>Înapoi la listă</a>
+            <a class="btn btn-primary" asp-action="Index"><i class="bi bi-arrow-left-circle"></i>Înapoi la listă</a>
         </div>
     </div>
 </div>

@@ -36,16 +36,17 @@
             <input asp-for="Picture" class="form-control" />
             <span asp-validation-for="Picture" class="text-danger"></span>
         </div>
+
         <div class="form-group">
             <form asp-action="Delete">
                 <input type="hidden" asp-for="Id" />
-                <input type="submit" value="Șterge" class=" btn btn-danger" />
+                <input type="submit" value="Șterge" class="btn btn-danger float-right" />
             </form>
-            <a asp-action="Index" class="btn btn-primary float-right"><i class="bi bi-arrow-left-circle"></i>Înapoi la listă</a>
+            <a class="btn btn-primary" asp-action="Index"><i class="bi bi-arrow-left-circle"></i>Înapoi la listă</a>
         </div>
-        
+
     </div>
-</div>
+    </div>
 
 
 

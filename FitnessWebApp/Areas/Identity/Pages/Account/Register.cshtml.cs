@@ -51,14 +51,14 @@ namespace FitnessWebApp.Areas.Identity.Pages.Account
             public string Email { get; set; }
 
             [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [StringLength(100, ErrorMessage = "Parola trebuie să fie de minim 6 caractere, să aibă litere mari, mici și un caracter special!", MinimumLength = 6)]
             [DataType(DataType.Password)]
-            [Display(Name = "Password")]
+            [Display(Name = "Parolă")]
             public string Password { get; set; }
 
             [DataType(DataType.Password)]
-            [Display(Name = "Confirm password")]
-            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            [Display(Name = "Confirmare parolă")]
+            [Compare("Password", ErrorMessage = "Parola și parola confirmată nu se potrivesc.")]
             public string ConfirmPassword { get; set; }
         }
 
