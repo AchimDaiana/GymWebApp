@@ -1,5 +1,6 @@
 ﻿using GymWebApp.Data.Services;
 using GymWebApp.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace GymWebApp.Controllers
 {
+    [Authorize]
     public class SubscriptionsController : Controller
     {
         private readonly ISubscriptionsServices _service;
@@ -17,12 +19,15 @@ namespace GymWebApp.Controllers
             _service = service;
         }
 
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var allSubscriptions = await _service.GetAllAsync();
             return View(allSubscriptions);
         }
 
+
+        [AllowAnonymous]
         //get/details
         public async Task<IActionResult> Details(int id)
         {

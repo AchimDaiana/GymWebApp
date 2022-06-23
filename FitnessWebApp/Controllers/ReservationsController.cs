@@ -19,6 +19,7 @@ namespace GymWebApp.Controllers
             _service = service;
         }
 
+        
         public async Task<IActionResult> Index()
         {
             var reservations = Enumerable.Empty<Reservation>();
@@ -36,12 +37,14 @@ namespace GymWebApp.Controllers
             return View(reservations);
         }
 
+        
         public async Task<IActionResult> Details(int id)
         {
             var reservationDetails = await _service.GetReservationByIdAsync(id);
             return View(reservationDetails);
         }
 
+        
         public async Task<IActionResult> Create()
         {
             var reservationDropDownsValue = await _service.GetReservationDropDownsData();
